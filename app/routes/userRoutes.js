@@ -14,12 +14,12 @@ module.exports = function(app, db) {
         });
     });
     app.post('/users', (req, res) => {
-      const note = { 
-          fbid: req.body.fbid, 
-          firstName: req.body.firstName, 
-          lastName: req.body.lastName 
+        const user = { 
+            fbid: req.body.fbid, 
+            firstName: req.body.firstName, 
+            lastName: req.body.lastName
         };
-        db.collection('users').insert(note, (err, result) => {
+        db.collection('users').insert(user, (err, result) => {
             if (err) { 
                 res.send({ 'error': 'An error has occurred' }); 
             } else {
@@ -43,7 +43,7 @@ module.exports = function(app, db) {
         // const id = req.params.id;
         const details = { fbid: req.params.id };
         const user = { 
-            fbid: req.params.id, 
+            fbid: req.params.fbid, 
             firstName: req.body.firstName,
             lastName: req.body.lastName
         };
