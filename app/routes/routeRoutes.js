@@ -26,19 +26,6 @@ module.exports = function(app, db) {
             }
         });
     });
-    app.get('/route/:routeName', (req, res) => {
-        // const id = req.params.id;
-        // const details = { '_id': new ObjectID(id) };
-        // console.log(req.params.fbid);        
-        const details = { 'routeName':req.params.routeName};
-        db.collection('route').findOne(details, (err, item) => {
-            if (err) {
-                res.send({'error':'An error has occurred'});
-            } else {
-                res.send(item);
-            }
-        });
-    });
     app.post('/route', (req, res) => {
       const note = { 
             fbid: req.body.fbid, 
