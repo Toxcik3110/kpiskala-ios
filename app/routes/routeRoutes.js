@@ -5,7 +5,7 @@ module.exports = function(app, db) {
         // const details = { '_id': new ObjectID(id) };
         // console.log(req.params.fbid);        
         const details = { 'fbid':req.params.fbid};
-        db.collection('route').find(details, (err, items) => {
+        db.collection('route').find(details).toArray((err, items) => {
             if (err) {
                 res.send({'error':'An error has occurred'});
             } else {
